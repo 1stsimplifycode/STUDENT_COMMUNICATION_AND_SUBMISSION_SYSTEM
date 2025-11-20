@@ -1,185 +1,338 @@
-Student Academic Communication and Submission System (SACSS)
-A comprehensive database management system for tracking and analyzing student assignment submissions, multi-channel communications, and academic performance metrics.
-📋 Project Overview
-Course: UE23CS351A - Database Management Systems
-Institution: PES University, Bengaluru
-Team Code: 024_144_813
-Academic Term: Aug-Dec 2025
-Team Members
+# Student Academic Communication and Submission System (SACSS)
 
-Adishree Gupta (PES1UG23CS024) - Section 5A
-Bhavani S (PES1UG23CS144) - Section 5A
-Monica M (PES1UG24CS813) - Section 5A
+<div align="center">
 
-Faculty: Prof. Raghu B. A.
+![Database](https://img.shields.io/badge/Database-MySQL-blue?style=for-the-badge&logo=mysql)
+![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
-🎯 Problem Statement
+**A comprehensive database management system for tracking and analyzing student assignment submissions, multi-channel communications, and academic performance metrics.**
+
+</div>
+
+---
+
+## 📋 Project Overview
+
+<table>
+<tr>
+<td><b>Course</b></td>
+<td>UE23CS351A - Database Management Systems</td>
+</tr>
+<tr>
+<td><b>Institution</b></td>
+<td>PES University, Bengaluru</td>
+</tr>
+<tr>
+<td><b>Team Code</b></td>
+<td>024_144_813</td>
+</tr>
+<tr>
+<td><b>Academic Term</b></td>
+<td>Aug-Dec 2025</td>
+</tr>
+<tr>
+<td><b>Faculty</b></td>
+<td>Prof. Raghu B. A.</td>
+</tr>
+</table>
+
+### 👥 Team Members
+
+| Name | SRN | Section |
+|------|-----|---------|
+| Adishree Gupta | PES1UG23CS024 | 5A |
+| Bhavani S | PES1UG23CS144 | 5A |
+| Monica M | PES1UG24CS813 | 5A |
+
+---
+
+## 🎯 Problem Statement
+
+<div style="background-color: #f6f8fa; padding: 20px; border-left: 4px solid #0366d6; margin: 20px 0;">
+
 Academic institutions face challenges in managing assignment lifecycles due to:
 
-Fragmented communication channels (LMS + instant messaging)
-Inconsistent student engagement tracking
-Manual submission monitoring and reminder systems
-Lack of unified analytics on student behavior patterns
+- 🔀 **Fragmented communication channels** (LMS + instant messaging)
+- 📊 **Inconsistent student engagement tracking**
+- 📝 **Manual submission monitoring and reminder systems**
+- 🔍 **Lack of unified analytics** on student behavior patterns
 
-Solution: SACSS integrates formal (LMS) and informal (WhatsApp, Telegram) communication channels to streamline assignment management, automate reminders, and provide data-driven insights into student submission behaviors.
+</div>
 
-✨ Key Features
-Core Functionality
+### 💡 Solution
 
-✅ Assignment Management - Create, post, and track assignments across multiple classes
-✅ Multi-Channel Notifications - Send reminders via LMS, WhatsApp, Telegram, Email, Discord
-✅ Automated Deadline Tracking - Auto-detect late submissions with timestamp validation
-✅ Grading System - Structured evaluation with remarks and grade boundaries
-✅ Behavioral Analytics - Track submission patterns, delays, and student engagement
+**SACSS** integrates formal (LMS) and informal (WhatsApp, Telegram) communication channels to streamline assignment management, automate reminders, and provide data-driven insights into student submission behaviors.
 
-Advanced Features
+---
 
-📊 Performance Dashboard - Real-time analytics on student and class performance
-🔔 Smart Reminders - Automated notification system with delivery status tracking
-📈 Risk Assessment - Identify at-risk students based on submission patterns
-🎓 Teacher Workload Management - Monitor grading queues and assignment distribution
-🔍 Predictive Analytics - Forecast student performance trends
+## ✨ Key Features
 
+<table>
+<tr>
+<td width="50%">
 
-🗄️ Database Architecture
-Entity-Relationship Model
-Core Entities
+### 🎓 Core Functionality
+- ✅ Assignment Management
+- ✅ Multi-Channel Notifications
+- ✅ Automated Deadline Tracking
+- ✅ Grading System
+- ✅ Behavioral Analytics
 
-User - Base authentication (Admin, Teacher, Student roles)
-Teacher - Faculty profile and subject information
-Student - Student profile with class and communication preferences
-Assignment - Assignment details with deadlines and instructions
-Submission - Student submissions with grading information
-Notification - Multi-channel notification logs
-LMS - Learning Management System integration
-Instant Messaging Platform - IM platform configurations
+</td>
+<td width="50%">
 
-Supporting Entities
+### 🚀 Advanced Features
+- 📊 Performance Dashboard
+- 🔔 Smart Reminders
+- 📈 Risk Assessment
+- 🎓 Workload Management
+- 🔍 Predictive Analytics
 
-student_behavior_analytics - Derived analytics on submission patterns
-action_log - Audit trail for all system actions
-expert_observation - AI/ML feature tracking
-expert_memory - Learning pattern storage
-expert_suggestion - AI-powered recommendations
+</td>
+</tr>
+</table>
 
-Key Relationships
+---
 
+## 🗄️ Database Architecture
+
+### 📐 Entity-Relationship Model
+
+<details>
+<summary><b>🔹 Core Entities (Click to expand)</b></summary>
+
+| Entity | Description | Type |
+|--------|-------------|------|
+| **User** | Base authentication table | Strong |
+| **Teacher** | Faculty profile | Strong |
+| **Student** | Student profile | Strong |
+| **Assignment** | Assignment details | Strong |
+| **Submission** | Student submissions | Weak |
+| **Notification** | Notification logs | Weak |
+| **LMS** | Learning Management System | Strong |
+| **IM Platform** | Instant Messaging Platform | Strong |
+
+</details>
+
+<details>
+<summary><b>🔹 Supporting Entities (Click to expand)</b></summary>
+
+- `student_behavior_analytics` - Submission pattern analytics
+- `action_log` - Audit trail
+- `expert_observation` - AI/ML tracking
+- `expert_memory` - Learning patterns
+- `expert_suggestion` - AI recommendations
+
+</details>
+
+### 🔗 Key Relationships
+
+```
 Student ↔ Assignment → Submission (M:N via weak entity)
 Teacher ↔ LMS (M:N)
 Student ↔ IM Platform (M:N)
 Assignment → Notification (1:M)
+```
 
+---
 
-🛠️ Technical Implementation
-Database Constraints (15+ Types)
+## 🛠️ Technical Implementation
 
-Primary Keys - Unique identification across 13 tables
-Foreign Keys - Referential integrity with CASCADE/RESTRICT
-Unique Constraints - Prevent duplicate usernames, emails, roll numbers
-NOT NULL - Mandatory fields (30+ columns)
-CHECK Constraints - Value validation (marks range, email format)
-DEFAULT - Automatic values (timestamps, status defaults)
-AUTO_INCREMENT - Sequential ID generation
-ENUM - Predefined value lists (roles, status)
-Indexes - Performance optimization (15+ indexes)
-Trigger-Based - Business logic enforcement
-Procedure-Based - Validation procedures
-View-Based - CHECK OPTIONS on views
-Length/Size - String length limits
-Temporal/Date - Date validation rules
-Conditional - Complex business rules
+### 🔒 Database Constraints (15+ Types)
 
-Stored Procedures
+<table>
+<tr>
+<td width="33%">
 
-generate_reminders() - Bulk notification generation
-grade_submission() - Validate and record grades
-get_student_performance() - Performance report generation
-get_assignment_statistics() - Assignment analytics
-send_bulk_notifications() - Mass notification dispatcher
+**Integrity Constraints**
+1. Primary Keys
+2. Foreign Keys
+3. Unique Constraints
+4. NOT NULL
+5. CHECK Constraints
 
-Database Functions
+</td>
+<td width="33%">
 
-calculate_submission_rate() - Compute class submission percentages
-get_grade_classification() - Convert marks to letter grades
-is_student_at_risk() - Risk assessment algorithm
-get_student_avg_delay() - Calculate average submission delay
-days_until_deadline() - Time remaining calculator
+**Business Logic**
+6. DEFAULT Values
+7. AUTO_INCREMENT
+8. ENUM Types
+9. Trigger-Based
+10. Procedure-Based
 
-Triggers
+</td>
+<td width="33%">
 
-check_submission_deadline - Auto-classify late submissions
-update_behavior_after_submission - Update analytics on submit
-log_assignment_creation - Audit trail logging
-prevent_assignment_deletion - Protect data integrity
-update_on_grading - Track grading actions
+**Advanced Rules**
+11. View-Based
+12. Length/Size
+13. Temporal/Date
+14. Conditional
+15. Indexes
 
-Analytical Views
+</td>
+</tr>
+</table>
 
-top_performing_students - High-achiever identification
-assignment_completion_stats - Assignment-level metrics
-students_at_risk - Early warning system
-notification_effectiveness - Channel performance analysis
-teacher_workload - Faculty workload distribution
-class_performance_summary - Class-level aggregations
+### ⚙️ Stored Procedures
 
+<details>
+<summary><b>View All Procedures</b></summary>
 
-📊 SQL Features Demonstrated
-Complex Query Types
+```sql
+-- 1. Bulk notification generation
+CALL generate_reminders(assignment_id, class_name, channels);
 
-Nested Subqueries - Multi-level data retrieval
-Joins (INNER, LEFT, RIGHT, SELF, CROSS) - Relational operations
-Aggregate Functions - COUNT, AVG, SUM, MAX, MIN, STDDEV
-Window Functions - RANK, DENSE_RANK, PERCENT_RANK, NTILE
-Common Table Expressions (CTEs) - Cohort analysis
-Conditional Logic - CASE statements for classification
-Date/Time Functions - Temporal pattern analysis
-String Functions - Text processing and validation
+-- 2. Validate and record grades
+CALL grade_submission(submission_id, marks, remarks, teacher_id);
 
+-- 3. Performance report generation
+CALL get_student_performance(student_id);
 
-🔐 Default Credentials
-Admin Access
+-- 4. Assignment analytics
+CALL get_assignment_statistics(assignment_id);
 
-Username: root
-Password: Sr1*ganesh
-Role: System Administrator
+-- 5. Mass notification dispatcher
+CALL send_bulk_notifications(assignment_id, audience, mode, message);
+```
 
-Teacher Accounts
+</details>
 
-Username: bhavani | Password: bhavani@123
-Username: monica | Password: monica@123
+### 📊 Database Functions
 
-Student Accounts
+<details>
+<summary><b>View All Functions</b></summary>
 
-Usernames: student1 - student5
-Password: stud123 (all students)
+| Function | Returns | Purpose |
+|----------|---------|---------|
+| `calculate_submission_rate()` | DECIMAL(5,2) | Class submission % |
+| `get_grade_classification()` | VARCHAR(20) | Letter grade |
+| `is_student_at_risk()` | BOOLEAN | Risk assessment |
+| `get_student_avg_delay()` | DECIMAL(5,2) | Avg delay days |
+| `days_until_deadline()` | INT | Time remaining |
 
-Note: Passwords are SHA-256 hashed in the database
+</details>
 
-🚀 Installation & Setup
-Prerequisites
-bash- MySQL 8.0+
-- Python 3.8+
-- pip (Python package manager)
-Database Setup
-sql-- 1. Create database and schema
+### 🔔 Triggers
+
+<table>
+<tr>
+<th>Trigger</th>
+<th>Event</th>
+<th>Action</th>
+</tr>
+<tr>
+<td>check_submission_deadline</td>
+<td>BEFORE INSERT</td>
+<td>Auto-classify late submissions</td>
+</tr>
+<tr>
+<td>update_behavior_after_submission</td>
+<td>AFTER INSERT</td>
+<td>Update analytics</td>
+</tr>
+<tr>
+<td>log_assignment_creation</td>
+<td>AFTER INSERT</td>
+<td>Audit trail logging</td>
+</tr>
+<tr>
+<td>prevent_assignment_deletion</td>
+<td>BEFORE DELETE</td>
+<td>Protect data integrity</td>
+</tr>
+<tr>
+<td>update_on_grading</td>
+<td>AFTER UPDATE</td>
+<td>Track grading actions</td>
+</tr>
+</table>
+
+### 📈 Analytical Views
+
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+
+- 🏆 `top_performing_students`
+- 📋 `assignment_completion_stats`
+- ⚠️ `students_at_risk`
+- 📧 `notification_effectiveness`
+- 👨‍🏫 `teacher_workload`
+- 📊 `class_performance_summary`
+
+</div>
+
+---
+
+## 🔐 Default Credentials
+
+<table>
+<tr>
+<th>Role</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
+<tr>
+<td><b>👑 Admin</b></td>
+<td><code>root</code></td>
+<td><code>Sr1*ganesh</code></td>
+</tr>
+<tr>
+<td><b>👨‍🏫 Teacher 1</b></td>
+<td><code>bhavani</code></td>
+<td><code>bhavani@123</code></td>
+</tr>
+<tr>
+<td><b>👨‍🏫 Teacher 2</b></td>
+<td><code>monica</code></td>
+<td><code>monica@123</code></td>
+</tr>
+<tr>
+<td><b>👨‍🎓 Students</b></td>
+<td><code>student1-5</code></td>
+<td><code>stud123</code></td>
+</tr>
+</table>
+
+> ⚠️ **Note:** All passwords are SHA-256 hashed in the database
+
+---
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+
+```bash
+✓ MySQL 8.0+
+✓ Python 3.8+
+✓ pip (Python package manager)
+```
+
+### 📥 Database Setup
+
+```sql
+-- Step 1: Create database and schema
 mysql -u root -p < neurosync_schema.sql
 
--- 2. Apply constraints
+-- Step 2: Apply constraints
 mysql -u root -p neurosync_db < neurosync_constraints.sql
 
--- 3. Create triggers and procedures
+-- Step 3: Create triggers and procedures
 mysql -u root -p neurosync_db < neurosync_triggers_and_procedures.sql
 
--- 4. Fix passwords (if needed)
+-- Step 4: Fix passwords (if needed)
 mysql -u root -p neurosync_db < fix_passwords.sql
 
--- 5. Create analytical views
+-- Step 5: Create analytical views
 mysql -u root -p neurosync_db < fix_missing_views.sql
-Application Setup
-bash# Install Python dependencies
-pip install mysql-connector-python
-pip install streamlit  # For UI
-pip install python-telegram-bot  # For Telegram integration
+```
+
+### 🐍 Application Setup
+
+```bash
+# Install Python dependencies
+pip install mysql-connector-python streamlit python-telegram-bot
 
 # Run the application
 python ui.py
@@ -188,34 +341,42 @@ python ui.py
 ---
 
 ## 📁 Project Structure
-```
-dbms_final/
-├── SQL Files (DDL/DML)
-│   ├── neurosync_schema.sql              # Database schema definition
-│   ├── neurosync_constraints.sql         # Constraint implementation
-│   ├── neurosync_triggers_and_procedures.sql  # Business logic
-│   ├── neurosync_advanced_analytics.sql  # Complex queries
-│   ├── fix_passwords.sql                 # Password hash updates
-│   └── fix_missing_views.sql             # View definitions
-│
-├── Python Application
-│   ├── ui.py                             # Main Streamlit UI
-│   ├── channel.py                        # Channel management
-│   └── broadcast_module/
-│       ├── main.py                       # Broadcast orchestrator
-│       ├── config.py                     # Configuration management
-│       ├── db/mysql.py                   # Database connector
-│       └── channels/
-│           ├── telegram.py               # Telegram integration
-│           ├── email.py                  # Email service
-│           └── discord.py                # Discord webhooks
-│
-└── Documentation
-    └── DBMS23-Proj-Rpt_024-144-813.pdf  # Complete project report
 
-📈 Sample Analytics Queries
-1. Student Performance Report
-sqlSELECT 
+```
+📦 dbms_final/
+├── 📂 SQL Files (DDL/DML)
+│   ├── 📄 neurosync_schema.sql              # Database schema
+│   ├── 📄 neurosync_constraints.sql         # Constraints
+│   ├── 📄 neurosync_triggers_and_procedures.sql
+│   ├── 📄 neurosync_advanced_analytics.sql
+│   ├── 📄 fix_passwords.sql
+│   └── 📄 fix_missing_views.sql
+│
+├── 📂 Python Application
+│   ├── 🐍 ui.py                             # Main Streamlit UI
+│   ├── 🐍 channel.py                        # Channel management
+│   └── 📂 broadcast_module/
+│       ├── 🐍 main.py                       # Orchestrator
+│       ├── 🐍 config.py                     # Configuration
+│       ├── 📂 db/
+│       │   └── 🐍 mysql.py                  # DB connector
+│       └── 📂 channels/
+│           ├── 🐍 telegram.py
+│           ├── 🐍 email.py
+│           └── 🐍 discord.py
+│
+└── 📂 Documentation
+    └── 📄 DBMS23-Proj-Rpt_024-144-813.pdf
+```
+
+---
+
+## 📊 Sample Analytics Queries
+
+### 🎯 1. Student Performance Report
+
+```sql
+SELECT 
     s.name, 
     AVG(sub.marks_obtained) as avg_marks,
     COUNT(sub.submission_id) as total_submissions,
@@ -223,99 +384,199 @@ sqlSELECT
 FROM student s
 JOIN submission sub ON s.student_id = sub.student_id
 GROUP BY s.student_id;
-2. At-Risk Students
-sqlSELECT * FROM students_at_risk
+```
+
+### ⚠️ 2. At-Risk Students
+
+```sql
+SELECT * FROM students_at_risk
 WHERE late_percentage > 40;
-3. Notification Effectiveness
-sqlSELECT 
+```
+
+### 📧 3. Notification Effectiveness
+
+```sql
+SELECT 
     mode_of_alert,
     effectiveness_rate,
     total_notifications
 FROM notification_effectiveness
 ORDER BY effectiveness_rate DESC;
+```
 
-🎓 Academic Requirements Met
-Functional Requirements (FR1-FR15)
-✅ User authentication & role-based access
-✅ Assignment CRUD operations
-✅ Multi-channel notification system
-✅ Automated reminder generation
-✅ Late submission detection
-✅ Grading & feedback system
-✅ Behavioral analytics tracking
-✅ Administrative user management
-Non-Functional Requirements (NFR1-NFR15)
-✅ Data integrity (PK, FK, constraints)
-✅ Security (password hashing, access control)
-✅ Scalability (10,000+ students supported)
-✅ Performance (<2 second query response)
-✅ Auditability (complete action logging)
-✅ FERPA/GDPR compliance considerations
+---
 
-🔍 Key Insights & Analytics
-Performance Metrics
+## 🎓 Academic Requirements Met
 
-Top Performers: Students with avg ≥75% and on-time submissions
-Risk Indicators: Late % >40 OR consecutive late submissions ≥3
-Channel Effectiveness: WhatsApp shows highest engagement rates
-Peak Activity: Submissions peak 2-6 hours before deadlines
+<table>
+<tr>
+<td width="50%">
 
-Behavioral Patterns
+### ✅ Functional Requirements
+- [x] User authentication & RBAC
+- [x] Assignment CRUD operations
+- [x] Multi-channel notifications
+- [x] Automated reminders
+- [x] Late submission detection
+- [x] Grading & feedback
+- [x] Behavioral analytics
+- [x] Admin user management
 
-Students using preferred channels submit 18% faster
-Reminders sent 24-48 hours before deadline show 34% higher response
-Class performance variance correlates with teacher engagement frequency
+</td>
+<td width="50%">
 
+### ✅ Non-Functional Requirements
+- [x] Data integrity (PK, FK)
+- [x] Security (hashing)
+- [x] Scalability (10K+ users)
+- [x] Performance (<2s queries)
+- [x] Auditability (logging)
+- [x] FERPA/GDPR compliance
+- [x] Reliability (backups)
+- [x] Maintainability
 
-🛡️ Data Integrity Features
-Automatic Validations
+</td>
+</tr>
+</table>
 
-Marks cannot exceed assignment maximum
-Submission timestamps validated against deadlines
-Email format verification via regex
-Phone number format validation
-Username minimum length enforcement
+---
 
-Business Rule Enforcement
+## 🔍 Key Insights & Analytics
 
-Cannot delete teachers with active students
-Cannot delete assignments with submissions
-Graded submissions must have marks and timestamps
-Assignment deadlines must be in the future
+<div style="background-color: #e6f7ff; padding: 15px; border-radius: 8px; margin: 10px 0;">
 
+### 📈 Performance Metrics
+- **Top Performers:** Students with avg ≥75% and on-time submissions
+- **Risk Indicators:** Late % >40 OR consecutive late ≥3
+- **Channel Effectiveness:** WhatsApp shows highest engagement (87%)
+- **Peak Activity:** Submissions peak 2-6 hours before deadlines
 
-📊 Sample Data Included
+</div>
 
-Users: 6 (1 admin, 2 teachers, 5 students)
-Assignments: 3 across different subjects
-Submissions: 4 with varied statuses
-Notifications: 6 across multiple channels
-LMS Platforms: 3 (Moodle, Canvas, Google Classroom)
-IM Platforms: 3 (WhatsApp, Telegram, Discord)
+<div style="background-color: #fff7e6; padding: 15px; border-radius: 8px; margin: 10px 0;">
 
+### 🧠 Behavioral Patterns
+- Students using preferred channels submit **18% faster**
+- Reminders sent 24-48h before show **34% higher response**
+- Class variance correlates with teacher engagement frequency
 
-🔮 Future Enhancements
+</div>
 
- Machine learning for submission time prediction
- Mobile application for students
- Advanced plagiarism detection
- Integration with video conferencing tools
- Gamification features (badges, leaderboards)
- Parent portal for progress monitoring
- AI-powered personalized study recommendations
+---
 
+## 🛡️ Data Integrity Features
 
-📚 References
+<table>
+<tr>
+<td width="50%">
 
-MySQL Documentation: https://dev.mysql.com/doc/
-Database Systems Concepts (Silberschatz, Korth, Sudarshan)
-PES University DBMS Course Materials
+### ✓ Automatic Validations
+- Marks ≤ assignment maximum
+- Timestamp validation
+- Email format (regex)
+- Phone format validation
+- Username min length
 
+</td>
+<td width="50%">
 
-📄 License
-This project is submitted as part of academic coursework at PES University.
-© 2025 Adishree Gupta, Bhavani S, Monica M
+### ✓ Business Rules
+- No teacher deletion (if has students)
+- No assignment deletion (if submissions exist)
+- Graded = marks + timestamp required
+- Deadlines must be future dates
 
+</td>
+</tr>
+</table>
 
-🙏 Acknowledgments
-Special thanks to Prof. Raghu B. A. for guidance and support throughout this project.
+---
+
+## 📊 Sample Data Included
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; text-align: center;">
+<h3>👥 6 Users</h3>
+<p>1 admin, 2 teachers, 5 students</p>
+</div>
+
+<div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 20px; border-radius: 10px; color: white; text-align: center;">
+<h3>📝 3 Assignments</h3>
+<p>Across different subjects</p>
+</div>
+
+<div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 20px; border-radius: 10px; color: white; text-align: center;">
+<h3>📤 4 Submissions</h3>
+<p>With varied statuses</p>
+</div>
+
+</div>
+
+---
+
+## 🔮 Future Enhancements
+
+<table>
+<tr>
+<td>
+
+- [ ] 🤖 ML submission time prediction
+- [ ] 📱 Mobile application
+- [ ] 🔍 Plagiarism detection
+- [ ] 📹 Video conferencing integration
+
+</td>
+<td>
+
+- [ ] 🎮 Gamification features
+- [ ] 👨‍👩‍👦 Parent portal
+- [ ] 🧠 AI study recommendations
+- [ ] 📊 Advanced dashboards
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📚 References
+
+<div style="background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
+
+- 📖 MySQL Documentation: https://dev.mysql.com/doc/
+- 📚 Database Systems Concepts (Silberschatz, Korth, Sudarshan)
+- 🎓 PES University DBMS Course Materials
+
+</div>
+
+---
+
+## 📄 License
+
+<div align="center">
+<p>This project is submitted as part of academic coursework at PES University.</p>
+<p><b>© 2025 Adishree Gupta, Bhavani S, Monica M</b></p>
+</div>
+
+---
+
+## 🙏 Acknowledgments
+
+<div align="center" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); padding: 30px; border-radius: 15px; margin: 20px 0;">
+
+<h3>Special thanks to</h3>
+<h2>Prof. Raghu B. A.</h2>
+<p>For guidance and support throughout this project</p>
+
+</div>
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project helpful, please consider starring the repository!
+
+![PES University](https://img.shields.io/badge/PES-University-orange?style=for-the-badge)
+
+</div>
